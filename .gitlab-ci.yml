@@ -28,7 +28,8 @@ test_sonar_preview_job:
     - tags
   script:
     - git merge origin master --no-commit --no-ff
-    - mvn --batch-mode verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.1:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.analysis.mode=preview -Dsonar.issuesReport.console.enable=true -Dsonar.gitlab.commit_sha=$CI_BUILD_REF -Dsonar.gitlab.ref=$CI_BUILD_REF_NAME
+    - git log --pretty=format:%H origin/master..$CI_BUILD_REF | tr '\n' ','
+    - mvn --batch-mode verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.analysis.mode=preview -Dsonar.issuesReport.console.enable=true -Dsonar.gitlab.commit_sha=$(git log --pretty=format:%H origin/master..$CI_BUILD_REF | tr '\n' ',') -Dsonar.gitlab.ref=$CI_BUILD_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_ID -Dsonar.gitlab.unique_issue_per_inline=true
   tags:
     - docker
 test_sonar_job:
@@ -36,7 +37,7 @@ test_sonar_job:
   only:
     - master
   script:
-    - mvn --batch-mode verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.1:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN
-    - mvn --batch-mode verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.1:sonar -Dsonar.host.url=$SONAR_OFF_URL -Dsonar.login=$SONAR_OFF_LOGIN
+    - mvn --batch-mode verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN
+    - mvn --batch-mode verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.host.url=$SONAR_OFF_URL -Dsonar.login=$SONAR_OFF_LOGIN
   tags:
     - docker
