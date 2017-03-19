@@ -34,5 +34,8 @@ public class Fake {
         System.out.println(toto.length());
     }
 
-
+    public void fonction2() {
+        String toto = null;
+        System.out.println(toto.length());
+    }
 }
