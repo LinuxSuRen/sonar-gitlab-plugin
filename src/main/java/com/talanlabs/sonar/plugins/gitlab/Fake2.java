@@ -21,11 +21,11 @@ package com.talanlabs.sonar.plugins.gitlab;
 
 import java.util.List;
 
-public class Fake {
+public class Fake2 {
 
     List<String> ss;
 
-    public Fake(List<String> ss) {
+    public Fake2(List<String> ss) {
         this.ss = ss;
     }
 
