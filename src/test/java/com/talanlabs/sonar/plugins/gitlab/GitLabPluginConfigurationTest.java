@@ -89,7 +89,7 @@ public class GitLabPluginConfigurationTest {
         Assertions.assertThat(config.buildInitState()).isEqualTo(BuildInitState.PENDING);
         settings.setProperty(GitLabPlugin.GITLAB_BUILD_INIT_STATE, BuildInitState.RUNNING.getMeaning());
         Assertions.assertThat(config.buildInitState()).isEqualTo(BuildInitState.RUNNING);
-        settings.setProperty(GitLabPlugin.GITLAB_BUILD_INIT_STATE, "toto");
+        settings.setProperty(GitLabPlugin.GITLAB_BUILD_INIT_STATE, "buildOldLines");
         Assertions.assertThat(config.buildInitState()).isEqualTo(BuildInitState.PENDING);
 
         Assertions.assertThat(config.disableGlobalComment()).isFalse();
@@ -99,7 +99,7 @@ public class GitLabPluginConfigurationTest {
         Assertions.assertThat(config.statusNotificationsMode()).isEqualTo(StatusNotificationsMode.COMMIT_STATUS);
         settings.setProperty(GitLabPlugin.GITLAB_STATUS_NOTIFICATION_MODE, StatusNotificationsMode.EXIT_CODE.getMeaning());
         Assertions.assertThat(config.statusNotificationsMode()).isEqualTo(StatusNotificationsMode.EXIT_CODE);
-        settings.setProperty(GitLabPlugin.GITLAB_STATUS_NOTIFICATION_MODE, "toto");
+        settings.setProperty(GitLabPlugin.GITLAB_STATUS_NOTIFICATION_MODE, "buildOldLines");
         Assertions.assertThat(config.statusNotificationsMode()).isEqualTo(StatusNotificationsMode.COMMIT_STATUS);
 
         Assertions.assertThat(config.globalTemplate()).isNull();

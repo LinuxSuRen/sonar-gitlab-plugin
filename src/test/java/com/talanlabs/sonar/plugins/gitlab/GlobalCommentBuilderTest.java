@@ -309,7 +309,7 @@ public class GlobalCommentBuilderTest {
 
     @Test
     public void testTemplateIssueFail() {
-        settings.setProperty(GitLabPlugin.GITLAB_GLOBAL_TEMPLATE, "<#toto>");
+        settings.setProperty(GitLabPlugin.GITLAB_GLOBAL_TEMPLATE, "<#buildOldLines>");
 
         Assertions.assertThatThrownBy(() -> new GlobalCommentBuilder(config, null, new Reporter(config), new MarkDownUtils(settings)).buildForMarkdown()).isInstanceOf(MessageException.class);
     }

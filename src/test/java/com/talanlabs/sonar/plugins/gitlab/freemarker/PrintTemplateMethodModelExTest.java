@@ -65,12 +65,12 @@ public class PrintTemplateMethodModelExTest {
     @Test
     public void testSuccess() {
         Map<String, Object> root = new HashMap<>();
-        root.put("url", "toto");
+        root.put("url", "buildOldLines");
         root.put("componentKey", "tata");
         root.put("severity", Severity.BLOCKER);
         root.put("message", "titi");
         root.put("ruleKey", "ici");
-        Assertions.assertThat(print(Collections.singletonList(DefaultMapAdapter.adapt(root, null)))).isEqualTo(":no_entry: [titi](toto) [:blue_book:](http://myserver/coding_rules#rule_key=ici)");
+        Assertions.assertThat(print(Collections.singletonList(DefaultMapAdapter.adapt(root, null)))).isEqualTo(":no_entry: [titi](buildOldLines) [:blue_book:](http://myserver/coding_rules#rule_key=ici)");
     }
 
     @Test

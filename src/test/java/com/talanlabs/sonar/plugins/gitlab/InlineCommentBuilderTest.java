@@ -190,7 +190,7 @@ public class InlineCommentBuilderTest {
 
     @Test
     public void testTemplateIssueFail() {
-        settings.setProperty(GitLabPlugin.GITLAB_INLINE_TEMPLATE, "<#toto>");
+        settings.setProperty(GitLabPlugin.GITLAB_INLINE_TEMPLATE, "<#buildOldLines>");
 
         Assertions.assertThatThrownBy(() -> new InlineCommentBuilder(config, "123", null, 1, Collections.emptyList(), new MarkDownUtils(settings)).buildForMarkdown()).isInstanceOf(MessageException.class);
     }

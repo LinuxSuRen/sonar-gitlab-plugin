@@ -324,8 +324,8 @@ public class GetProjectTest {
                 "    }\n" +
                 "\n" +
                 "    public void fonction() {\n" +
-                "        String toto = null;\n" +
-                "        System.out.println(toto.length());\n" +
+                "        String buildOldLines = null;\n" +
+                "        System.out.println(buildOldLines.length());\n" +
                 "    }\n" +
                 "\n" +
                 "\n" +
@@ -343,8 +343,8 @@ public class GetProjectTest {
                 "    }\n" +
                 "\n" +
                 "    public void fonction() {\n" +
-                "        String toto = null;\n" +
-                "        System.out.println(toto.length());\n" +
+                "        String buildOldLines = null;\n" +
+                "        System.out.println(buildOldLines.length());\n" +
                 "    }\n" +
                 "\n" +
                 "\n" +
@@ -403,7 +403,7 @@ public class GetProjectTest {
                 "]"));
         gitlab.enqueue(new MockResponse().setResponseCode(200).setBody("[\n" +
                 "  {\n" +
-                "    \"diff\": \"--- /dev/null\\n+++ b/src/main/java/com/talanlabs/sonar/plugins/gitlab/Fake.java\\n@@ -0,0 +1,19 @@\\n+package com.talanlabs.sonar.plugins.gitlab;\\n+\\n+import java.util.List;\\n+\\n+public class Fake {\\n+\\n+    List<String> ss;\\n+\\n+    public Fake(List<String> ss) {\\n+        this.ss = ss;\\n+    }\\n+\\n+    public void fonction() {\\n+        String toto = null;\\n+        System.out.println(toto.length());\\n+    }\\n+\\n+\\n+}\\n\",\n" +
+                "    \"diff\": \"--- /dev/null\\n+++ b/src/main/java/com/talanlabs/sonar/plugins/gitlab/Fake.java\\n@@ -0,0 +1,19 @@\\n+package com.talanlabs.sonar.plugins.gitlab;\\n+\\n+import java.util.List;\\n+\\n+public class Fake {\\n+\\n+    List<String> ss;\\n+\\n+    public Fake(List<String> ss) {\\n+        this.ss = ss;\\n+    }\\n+\\n+    public void fonction() {\\n+        String buildOldLines = null;\\n+        System.out.println(buildOldLines.length());\\n+    }\\n+\\n+\\n+}\\n\",\n" +
                 "    \"new_path\": \"src/main/java/com/talanlabs/sonar/plugins/gitlab/Fake.java\",\n" +
                 "    \"old_path\": \"src/main/java/com/talanlabs/sonar/plugins/gitlab/Fake.java\",\n" +
                 "    \"a_mode\": \"0\",\n" +
@@ -416,7 +416,7 @@ public class GetProjectTest {
                 "]"));
         gitlab.enqueue(new MockResponse().setResponseCode(200).setBody("[\n" +
                 "  {\n" +
-                "    \"diff\": \"--- /dev/null\\n+++ b/src/main/java/com/talanlabs/sonar/plugins/gitlab/Fake2.java\\n@@ -0,0 +1,19 @@\\n+package com.talanlabs.sonar.plugins.gitlab;\\n+\\n+import java.util.List;\\n+\\n+public class Fake2 {\\n+\\n+    List<String> ss;\\n+\\n+    public Fake(List<String> ss) {\\n+        this.ss = ss;\\n+    }\\n+\\n+    public void fonction() {\\n+        String toto = null;\\n+        System.out.println(toto.length());\\n+    }\\n+\\n+\\n+}\\n\",\n" +
+                "    \"diff\": \"--- /dev/null\\n+++ b/src/main/java/com/talanlabs/sonar/plugins/gitlab/Fake2.java\\n@@ -0,0 +1,19 @@\\n+package com.talanlabs.sonar.plugins.gitlab;\\n+\\n+import java.util.List;\\n+\\n+public class Fake2 {\\n+\\n+    List<String> ss;\\n+\\n+    public Fake(List<String> ss) {\\n+        this.ss = ss;\\n+    }\\n+\\n+    public void fonction() {\\n+        String buildOldLines = null;\\n+        System.out.println(buildOldLines.length());\\n+    }\\n+\\n+\\n+}\\n\",\n" +
                 "    \"new_path\": \"src/main/java/com/talanlabs/sonar/plugins/gitlab/Fake2.java\",\n" +
                 "    \"old_path\": \"src/main/java/com/talanlabs/sonar/plugins/gitlab/Fake2.java\",\n" +
                 "    \"a_mode\": \"0\",\n" +

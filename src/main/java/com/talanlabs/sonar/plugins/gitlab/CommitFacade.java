@@ -185,6 +185,7 @@ public class CommitFacade {
     private Map<String, Map<String, Set<Line>>> getPatchPositionsToLineMapping(List<String> revisions) throws IOException {
         Map<String, Map<String, Set<Line>>> result = new HashMap<>();
 
+        Map<String, List<GitLabCommitDiff>> commitDiffMap = new HashMap<>();
         for (String revision : revisions) {
             Paged<GitLabCommitDiff> paged = gitLabAPI.getGitLabAPICommits().getCommitDiffs(gitLabProject.getId(), revision, null);
             List<GitLabCommitDiff> commitDiffs = new ArrayList<>();
@@ -194,9 +195,15 @@ public class CommitFacade {
                 }
             } while ((paged = paged.nextPage()) != null);
 
-            result.put(revision, commitDiffs
-                    .stream()
-                    .collect(Collectors.toMap(GitLabCommitDiff::getNewPath, d -> getPositionsFromPatch(d.getDiff()))));
+            commitDiffMap.put(revision, commitDiffs);
+        }
+
+        for (String revision : revisions) {
+            List<GitLabCommitDiff> commitDiffs = commitDiffMap.get(revision);
+
+            for (GitLabCommitDiff commitDiff : commitDiffs) {
+                result.computeIfAbsent(revision, key -> new HashMap<>()).put(commitDiff.getNewPath(), getPositionsFromPatch(commitDiff.getDiff()));
+            }
         }
 
         LOG.debug("getPatchPositionsToLineMapping {}", result);

@@ -45,9 +45,9 @@ public class IssueComparatorTest {
 
     @Test
     public void testSeverity() {
-        Assertions.assertThat(issueComparator.compare(new MyPostJobIssue(Severity.BLOCKER, "toto", 1), new MyPostJobIssue(Severity.BLOCKER, "toto", 1))).isEqualTo(0);
-        Assertions.assertThat(issueComparator.compare(new MyPostJobIssue(Severity.MAJOR, "toto", 1), new MyPostJobIssue(Severity.BLOCKER, "toto", 1))).isEqualTo(1);
-        Assertions.assertThat(issueComparator.compare(new MyPostJobIssue(Severity.MAJOR, "toto", 1), new MyPostJobIssue(Severity.MINOR, "toto", 1))).isEqualTo(-1);
+        Assertions.assertThat(issueComparator.compare(new MyPostJobIssue(Severity.BLOCKER, "buildOldLines", 1), new MyPostJobIssue(Severity.BLOCKER, "buildOldLines", 1))).isEqualTo(0);
+        Assertions.assertThat(issueComparator.compare(new MyPostJobIssue(Severity.MAJOR, "buildOldLines", 1), new MyPostJobIssue(Severity.BLOCKER, "buildOldLines", 1))).isEqualTo(1);
+        Assertions.assertThat(issueComparator.compare(new MyPostJobIssue(Severity.MAJOR, "buildOldLines", 1), new MyPostJobIssue(Severity.MINOR, "buildOldLines", 1))).isEqualTo(-1);
     }
 
     @Test
